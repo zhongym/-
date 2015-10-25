@@ -37,8 +37,8 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10sp"
                     android:src="@drawable/report_consumption_icon" />
 
@@ -50,20 +50,49 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_my_course_list"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.0"
                 android:background="#0477D3"
                 android:orientation="vertical" >
+                
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10sp"
+                    android:src="@drawable/schedule_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的课表"
+                    android:textColor="@android:color/white" />
+                
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_search_book"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1.0"
                 android:background="#E1653D"
+                android:gravity="center"
                 android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/search_book_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查书服务"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
 
@@ -100,9 +129,9 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:layout_width="40sp"
-                            android:layout_height="40sp"
-                            android:layout_marginBottom="10sp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="10dp"
                             android:src="@drawable/score_icon" />
 
                         <TextView
@@ -114,18 +143,18 @@
 
                     <LinearLayout
                         android:id="@+id/ll_myconsume"
-                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1.0"
                         android:background="#817B88"
+                        android:gravity="center"
                         android:orientation="vertical" >
-                        
+
                         <ImageView
-                            android:layout_width="40sp"
-                            android:layout_height="40sp"
-                            android:layout_marginBottom="10sp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="10dp"
                             android:src="@drawable/onecard_icon" />
 
                         <TextView
@@ -133,7 +162,6 @@
                             android:layout_height="wrap_content"
                             android:text="我的消费"
                             android:textColor="@android:color/white" />
-                        
                     </LinearLayout>
                 </LinearLayout>
 
@@ -198,7 +226,7 @@
                     android:background="#447EA2"
                     android:gravity="center"
                     android:orientation="vertical" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,7 +238,6 @@
                         android:layout_height="wrap_content"
                         android:text="我的借阅"
                         android:textColor="@android:color/white" />
-                    
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

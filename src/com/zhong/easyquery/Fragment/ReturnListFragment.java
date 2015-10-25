@@ -31,6 +31,7 @@ import com.google.gson.reflect.TypeToken;
 import com.zhong.easyquery.R;
 import com.zhong.easyquery.domain.BorrowBookGroup;
 import com.zhong.easyquery.domain.BorrowBookItem;
+import com.zhong.easyquery.domain.ConsumeGroup;
 import com.zhong.easyquery.utils.ConstantValues;
 
 /**
@@ -99,6 +100,20 @@ public class ReturnListFragment extends BaseFragment {
 			for (BorrowBookItem borrowBookItem : list) {
 				Date date = formFormat.parse(borrowBookItem.jyrq);
 				String dateStr = toFormat.format(date);
+				
+				boolean contnues = false;
+				for (BorrowBookGroup group : bookGroups) {
+					if (dateStr.equals(group.date)) {
+						group.items.add(borrowBookItem);
+						contnues=true;
+						continue;
+					}
+				}
+				
+				if (contnues) {
+					continue;
+				}
+				
 				if (map.get(dateStr) == null) {
 					map.put(dateStr, new ArrayList<BorrowBookItem>());
 				}
@@ -112,15 +127,12 @@ public class ReturnListFragment extends BaseFragment {
 				bookGroups.add(group);
 			}
 
-//			floatTitle.setVisibility(View.VISIBLE);
-//			floatTitle.setText(bookGroups.get(0).date);
-
 			pb.setVisibility(View.GONE);
 			loadMoreview.setVisibility(View.GONE);
 			adapter.notifyDataSetChanged();
 
 			// 展开全部分组
-			for (int i = 0; i < listView.getCount(); i++) {
+			for (int i = 0; i < bookGroups.size(); i++) {
 				listView.expandGroup(i);
 			}
 

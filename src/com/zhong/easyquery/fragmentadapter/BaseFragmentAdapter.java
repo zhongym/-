@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 /*
  * ，ViewPager应该和Fragment一起使用时，此时ViewPager的适配器是FragmentPagerAdapter，
- * 当你实现一个FragmentPagerAdapter,你必须至少覆盖以下方法:
 
  getCount()
 

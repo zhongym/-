@@ -43,5 +43,10 @@ public interface ConstantValues {
 	 */
 	String GRADELIST_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/grade/get-GradeList";
 	
+	/**
+	 * 我的消费url
+	 */
+	String CONSUMELIST_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/oneCard/get-ConsumeList";
+	
 	
 }

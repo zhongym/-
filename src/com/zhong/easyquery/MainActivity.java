@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 
 import com.zhong.easyquery.Fragment.BaseFragment;
 import com.zhong.easyquery.Fragment.MessageFragment;
@@ -33,16 +37,20 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 	private RadioGroup radioGroup;
 
 	private ViewPager viewPager;
+	
+	private RelativeLayout titleView;
+	private TextView titleTextView;
+	private ImageView editImageView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		initData();
 		initView(); 
-		
 		//关闭预加载，默认一次只加载一个Fragment
-		viewPager.setOffscreenPageLimit(2); //使用这个设置不能实现只能加载一个page
+//		viewPager.setOffscreenPageLimit(2); //使用这个设置不能实现只能加载一个page
 	}
 
 	private void initData() {
@@ -56,11 +64,14 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 	 * 初始化组件
 	 */
 	private void initView() {
+		titleView=(RelativeLayout) findViewById(R.id.rl_title);
+		titleTextView = (TextView) findViewById(R.id.tv_title);
+		editImageView = (ImageView) findViewById(R.id.iv_edit);
+		
 		viewPager = (ViewPager) findViewById(R.id.viewPage);
 		viewPager.setAdapter(new BaseFragmentAdapter(getSupportFragmentManager(), fragments));
 
 		viewPager.setOnPageChangeListener(this);
-
 		// 初始化底部按钮
 		radioGroup = (RadioGroup) findViewById(R.id.main_radiogroup);
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -84,8 +95,22 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 
 	@Override
 	public void onPageSelected(int arg0) {
+		switch (arg0) {
+		case 0:
+			titleView.setVisibility(View.VISIBLE);
+			titleTextView.setText("易查询");
+			editImageView.setVisibility(ViewPager.GONE);
+			break;
+		case 1:
+			titleView.setVisibility(View.VISIBLE);
+			titleTextView.setText("校圈");
+			editImageView.setVisibility(ViewPager.VISIBLE);
+			break;
+		case 2:
+			titleView.setVisibility(View.GONE);
+			break;
+		}
 		((RadioButton) radioGroup.getChildAt(arg0)).setChecked(true);
-		;
 	}
 
 	@Override

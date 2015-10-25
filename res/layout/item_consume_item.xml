@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="7dp" >
+
+    <TextView
+        android:id="@+id/tv_cons_locale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="二区一楼"
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="元"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_xfje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="-9.00"
+        android:textColor="#ff0000" />
+
+    <TextView
+        android:id="@+id/tv_cons_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_cons_locale"
+        android:layout_marginTop="5dp"
+        android:text="2015-10-25 12:33"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_syje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_xfje"
+        android:layout_marginTop="5dp"
+        android:text="余额:177.39元"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+</RelativeLayout>
