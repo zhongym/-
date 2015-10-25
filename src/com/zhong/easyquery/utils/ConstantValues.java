@@ -27,4 +27,21 @@ public interface ConstantValues {
 	 * 阅读排行url
 	 */
 	String READRANK_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/libraryReport/get-ReadRank";
+	
+	/**
+	 * 历史借书列表url
+	 */
+	String RETURNLIST_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/library/get-ReturnList";
+	
+	/**
+	 * 当前借阅书籍列表url
+	 */
+	String BORROWLIST_URL="http://ybg.gzccc.edu.cn/mobileapi/service/library/get-BorrowList";
+	
+	/**
+	 * 我的成绩url
+	 */
+	String GRADELIST_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/grade/get-GradeList";
+	
+	
 }

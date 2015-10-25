@@ -32,10 +32,51 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    
+    <!-- 自定义viewpager的标题 -->
 
-    </RelativeLayout>
+    <LinearLayout
+        android:background="#eeeeee"
+        android:id="@+id/ii_lottery_category"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:padding="5sp"
+            android:id="@+id/tv_current"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:text="当前借阅"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+              android:padding="5sp"
+            android:id="@+id/tv_history"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:text="历史借阅"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:src="@drawable/id_category_selector" />
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myread_viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" />
+        
 
 </LinearLayout>

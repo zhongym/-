@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -36,7 +37,7 @@ import com.zhong.easyquery.utils.NoticetManager;
  *           ============================================================
  *
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
 	private FinalHttp finalHttp;
 

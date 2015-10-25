@@ -77,7 +77,6 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 		// webView.getSettings().setCacheMode(2);
 		// webView.addJavascriptInterface(this, "ybgConsumeReport");
 		webView.setWebViewClient(new WebViewClient() {
-
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
@@ -135,6 +134,7 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 		} catch (JSONException e) {
 			e.printStackTrace();
 			showToast("数据解析出错！！！");
+			pb_loading.setVisibility(View.GONE);
 		}
 	}
 

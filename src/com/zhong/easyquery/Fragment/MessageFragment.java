@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhong.easyquery.HtmlActivity;
+import com.zhong.easyquery.MyScoreActivity;
 import com.zhong.easyquery.MyreadActivity;
 import com.zhong.easyquery.R;
 import com.zhong.easyquery.domain.AdPager;
@@ -25,6 +26,7 @@ import com.zhong.easyquery.view.AdViewPager;
 public class MessageFragment extends BaseFragment implements OnClickListener {
 
 	private AdViewPager viewPager;
+	
 	/**学习报告 **/
 	private LinearLayout studyReport;
 	
@@ -37,10 +39,13 @@ public class MessageFragment extends BaseFragment implements OnClickListener {
 	/**我的借阅 **/
 	private LinearLayout myReading;
 	
+	/**我的成绩 **/
+	private LinearLayout myScore;
+	
 	
 
 	@Override
-	public void initData(Bundle savedInstanceState) {
+	public void initData() {
 		List<AdPager> views = new ArrayList<AdPager>();
 		for (int i = 0; i < 4; i++) {
 			TextView tView = new TextView(getContext());
@@ -65,6 +70,7 @@ public class MessageFragment extends BaseFragment implements OnClickListener {
 		consumptionReport = (LinearLayout) view.findViewById(R.id.ll_report_consumption);
 		readReport = (LinearLayout)view.findViewById(R.id.ll_read_report);
 		myReading = (LinearLayout) view.findViewById(R.id.ll_myreading);
+		myScore = (LinearLayout) view.findViewById(R.id.ll_myscore);
 		
 		viewPager = (AdViewPager) view.findViewById(R.id.adViewPager);
 		return view;
@@ -76,6 +82,7 @@ public class MessageFragment extends BaseFragment implements OnClickListener {
 		consumptionReport.setOnClickListener(this);
 		readReport.setOnClickListener(this);
 		myReading.setOnClickListener(this);
+		myScore.setOnClickListener(this);
 		
 	}
 	
@@ -109,6 +116,10 @@ public class MessageFragment extends BaseFragment implements OnClickListener {
 			
 		case R.id.ll_myreading: //我的借阅
 			intent= new Intent(getActivity(), MyreadActivity.class);
+			break;
+			
+		case R.id.ll_myscore: //我的成绩
+			intent= new Intent(getActivity(), MyScoreActivity.class);
 			break;
 
 		}

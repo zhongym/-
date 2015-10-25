@@ -9,7 +9,7 @@ import com.zhong.easyquery.R;
 public class SchoolFragment extends BaseFragment {
 
 	@Override
-	public void initData(Bundle savedInstanceState) {
+	public void initData() {
 	}
 
 	@Override
