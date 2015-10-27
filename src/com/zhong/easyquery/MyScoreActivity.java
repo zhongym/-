@@ -42,7 +42,6 @@ public class MyScoreActivity extends BaseActivity {
 		setContentView(R.layout.activity_myscore);
 
 		initView();
-
 		initData();
 	}
 

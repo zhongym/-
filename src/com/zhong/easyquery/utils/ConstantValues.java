@@ -48,5 +48,24 @@ public interface ConstantValues {
 	 */
 	String CONSUMELIST_URL = "http://ybg.gzccc.edu.cn/mobileapi/service/oneCard/get-ConsumeList";
 	
+	/**
+	 *  上周消费
+	 */
+	String CONSUMERANK_URL="http://ybg.gzccc.edu.cn/mobileapi/service/oneCardReport/get-ConsumeRank";
+	
+	/**
+	 *  总消费
+	 */
+	String CONSUMESTATISTICS_URL="http://ybg.gzccc.edu.cn/mobileapi/service/oneCardReport/get-ConsumeStatistics";
+	
+	/**
+	 *  绩点排行
+	 */
+	String GRADEREPORTRANK_URL="http://ybg.gzccc.edu.cn/mobileapi/service/gradeReport/get-GradeReportRank";
+	
+	/**
+	 *  查找书本url
+	 */
+	String SEARCHBOOKS_URL="http://ybg.gzccc.edu.cn/mobileapi/service/bookService/search-books";
 	
 }

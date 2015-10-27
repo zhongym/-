@@ -86,6 +86,14 @@ public class BaseActivity extends FragmentActivity {
 			NoticetManager.showNoNetWork(this);
 			return;
 		}
+		
+		if (url==null) {
+			return;
+		}
+		
+		if (params==null) {
+			params=new AjaxParams();
+		}
 
 		// 设置所有url都需要的参数
 		params.put("sblx", "1");

@@ -45,8 +45,8 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 
 	/** 标题文本 **/
 	private TextView titleTextView;
-	
-	/**排行表*/
+
+	/** 排行表 */
 	private ImageView iv_pk;
 
 	private static String TAG = "HtmlActivity";
@@ -60,19 +60,21 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 		String url = getIntent().getStringExtra("url");
 		String title = getIntent().getStringExtra("title");
 		titleTextView.setText(title);
-		
+
 		if (title.equals("阅读报告")) {
 			iv_pk.setVisibility(View.VISIBLE);
 			iv_pk.setOnClickListener(this);
 		}
-		
+
 		initData(url);
 
 	}
 
 	private void initView() {
+		handleBreakButton();
 		webView = (WebView) findViewById(R.id.webView);
 		webView.getSettings().setJavaScriptEnabled(true);
+		webView.getSettings().setAppCacheEnabled(false);
 		webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		// webView.getSettings().setCacheMode(2);
 		// webView.addJavascriptInterface(this, "ybgConsumeReport");
@@ -83,14 +85,54 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 				pb_loading.setVisibility(View.GONE);
 			}
 
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+				if ("lianyi://oneCardReport.jumpToConsume".equals(url)) { // 我的消费
+					Intent intent = new Intent(HtmlActivity.this, MyConsumeActivity.class);
+					HtmlActivity.this.startActivity(intent);
+					return true;
+				}
+
+				if ("lianyi://oneCardReport.jumpToRank".equals(url)) { // 上周消费
+					Intent intent = new Intent(HtmlActivity.this, HtmlActivity.class);
+					intent.putExtra("title", "上周消费");
+					intent.putExtra("url", ConstantValues.CONSUMERANK_URL);
+					HtmlActivity.this.startActivity(intent);
+					return true;
+				}
+
+				if ("lianyi://oneCardReport.jumpToStatic".equals(url)) { // 总消费
+					Intent intent = new Intent(HtmlActivity.this, HtmlActivity.class);
+					intent.putExtra("title", "总消费");
+					intent.putExtra("url", ConstantValues.CONSUMESTATISTICS_URL);
+					HtmlActivity.this.startActivity(intent);
+					return true;
+				}
+
+				if ("lianyi://studyReport.jumpToScore".equals(url)) { // 我的成绩
+					Intent intent = new Intent(HtmlActivity.this, MyScoreActivity.class);
+					HtmlActivity.this.startActivity(intent);
+					return true;
+				}
+				
+				if ("lianyi://studyReport.jumpToGradeRank".equals(url)) { // 绩点排行
+
+					Intent intent = new Intent(HtmlActivity.this, HtmlActivity.class);
+					intent.putExtra("title", "绩点排行");
+					intent.putExtra("url", ConstantValues.GRADEREPORTRANK_URL);
+					HtmlActivity.this.startActivity(intent);
+					return true;
+				}
+
+				return false;
+			}
+
 		});
-		 webView.setWebChromeClient(new WebChromeClient());
+		// webView.setWebChromeClient(new WebChromeClient());
 
 		pb_loading = (ProgressBar) findViewById(R.id.pb_loading);
 		titleTextView = (TextView) findViewById(R.id.tv_title);
 		iv_pk = (ImageView) findViewById(R.id.iv_pk);
-		handleBreakButton();
-
 	}
 
 	private void initData(String url) {
@@ -107,7 +149,7 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 
 			StringBuffer sb = new StringBuffer(content);
 			if (sb.indexOf("阅读报告") == -1) {
-				
+
 				String script = "<script src=\"http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js\"></script> "
 						+ "<script src=\"http://cdn.hcharts.cn/highcharts/4.0.3/highcharts.js\"></script>"
 						+ "<script src=\"http://code.highcharts.com/highcharts-more.js\"></script>";
@@ -118,6 +160,23 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 
 			if (sb.indexOf("<!DOCTYPE html>") == -1) {
 				sb.insert(0, "<!DOCTYPE html>");
+			}
+
+			if (sb.indexOf("<script src=\"LIB_JQUERY\"></script>") != -1) {
+				sb.delete(
+						sb.indexOf("<script src=\"LIB_JQUERY\"></script>"),
+						sb.indexOf("<script src=\"LIB_JQUERY\"></script>")
+								+ "<script src=\"LIB_JQUERY\"></script>".length());
+			}
+			if (sb.indexOf("<script src=\"LIB_HIGHCHART\"></script>") != -1) {
+				sb.delete(sb.indexOf("<script src=\"LIB_HIGHCHART\"></script>"),
+						sb.indexOf("<script src=\"LIB_HIGHCHART\"></script>")
+								+ "<script src=\"LIB_HIGHCHART\"></script>".length());
+			}
+			if (sb.indexOf("<script src=\"LIB_HIGHCHART_MORE\"></script>") != -1) {
+				sb.delete(sb.indexOf("<script src=\"LIB_HIGHCHART_MORE\"></script>"),
+						sb.indexOf("<script src=\"LIB_HIGHCHART_MORE\"></script>")
+								+ "<script src=\"LIB_HIGHCHART_MORE\"></script>".length());
 			}
 
 			// String title =
@@ -141,8 +200,8 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.iv_pk://阅读排行
-			Intent intent= new Intent(this, HtmlActivity.class);
+		case R.id.iv_pk:// 阅读排行
+			Intent intent = new Intent(this, HtmlActivity.class);
 			intent.putExtra("title", "阅读排行");
 			intent.putExtra("url", ConstantValues.READRANK_URL);
 			startActivity(intent);
@@ -151,6 +210,6 @@ public class HtmlActivity extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
-		
+
 	}
 }
