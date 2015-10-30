@@ -14,11 +14,11 @@ public class SearchBookItem {
 	/** 作者s **/
 	public String author[];
 	/** 可借本数 **/
-	public String canLendNum;//canLendNum
+	public String canLendNum;//canlendnum
 	/** 当前多少人借 **/
 	public String currentLendNum;
 	/** 多少人借过 **/
-	public String hadLendedNum;//hadLendedNum
+	public String hadLendedNum;//hadlendednum
 	
 	/** 出版时间 **/
 	public String pubdate;
@@ -36,5 +36,7 @@ public class SearchBookItem {
 	public String title;
 	/** 书本总数 **/
 	public String total;
+	
+	public String xlh;
 
 }

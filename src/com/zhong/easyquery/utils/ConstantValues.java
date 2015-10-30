@@ -68,4 +68,9 @@ public interface ConstantValues {
 	 */
 	String SEARCHBOOKS_URL="http://ybg.gzccc.edu.cn/mobileapi/service/bookService/search-books";
 	
+	/**
+	 *   È±æœÍ«Èurl
+	 */
+	String BOOKDETAIL_URL="http://ybg.gzccc.edu.cn/mobileapi/service/bookService/get-bookDetail";
+	
 }

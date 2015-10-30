@@ -7,16 +7,20 @@ import net.tsz.afinal.http.AjaxParams;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +28,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dtr.zxing.activity.CaptureActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.zhong.easyquery.domain.SearchBookItem;
@@ -161,6 +166,29 @@ public class SearchBookActivity extends BaseActivity {
 			}
 		});
 		
+		/**
+		 * 点击打开条形码扫描界面
+		 */
+		searchCodeView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);			
+				SearchBookActivity.this.startActivity(intent);
+			}
+		});
+		
+		/**
+		 * 点击书本列表打开当前书本详情
+		 */
+		bookListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				SearchBookItem bookItem = bookList.get(position);
+				Intent intent = new Intent(getApplicationContext(), BookDetailsActivity.class);
+				intent.putExtra("isbn", bookItem.isbn);
+				intent.putExtra("xlh", bookItem.xlh);
+				SearchBookActivity.this.startActivity(intent);
+			}
+		});
 
 	}
 	

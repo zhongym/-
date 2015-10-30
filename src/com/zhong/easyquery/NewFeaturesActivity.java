@@ -68,8 +68,8 @@ public class NewFeaturesActivity extends Activity implements OnPageChangeListene
 
 	private void initData() {
 		views = new ArrayList<View>();
-		for (int i = 0; i < 4; i++) {
-			if (i == 3) {
+		for (int i = 0; i < 3; i++) {
+			if (i == 2) {
 				RelativeLayout view = (RelativeLayout) View.inflate(getApplicationContext(),
 						R.layout.page_newfeatures_4, null);
 				startBut = (Button) view.findViewById(R.id.bt_start);
